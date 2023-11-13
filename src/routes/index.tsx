@@ -1,5 +1,6 @@
 import { Routes as ReactRouterRoutes, Route } from "react-router-dom";
 import Authentication from "../pages/authentication";
+import Home from "../pages/home";
 
 export const Routes = () => {
   return (
@@ -9,6 +10,14 @@ export const Routes = () => {
         element={
           <>
             <Authentication />
+          </>
+        }
+      />
+      <Route
+        path="home"
+        element={
+          <>
+            <Home />
           </>
         }
       />

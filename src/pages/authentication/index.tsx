@@ -1,7 +1,8 @@
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
 import { supabaseClient } from "../../services/supabase";
+import { useUser } from "../../hooks/useUser";
 
 type FormValues = {
   email: string;
@@ -12,6 +13,8 @@ const Authentication = () => {
   const [hasAccount, setHasAccount] = useState(true);
   const navigate = useNavigate();
   const { handleSubmit, register, reset } = useForm<FormValues>();
+
+  const { getUser } = useUser();
 
   const handleAuthentication = useCallback(
     async ({ email, password }: FormValues) => {
@@ -41,6 +44,12 @@ const Authentication = () => {
     },
     []
   );
+
+  useEffect(() => {
+    getUser().then((user) => {
+      if (!!user) navigate("/home");
+    });
+  }, [navigate]);
 
   return (
     <div>
