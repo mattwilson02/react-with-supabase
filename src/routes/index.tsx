@@ -5,22 +5,8 @@ import Home from "../pages/home";
 export const Routes = () => {
   return (
     <ReactRouterRoutes>
-      <Route
-        path="/"
-        element={
-          <>
-            <Authentication />
-          </>
-        }
-      />
-      <Route
-        path="home"
-        element={
-          <>
-            <Home />
-          </>
-        }
-      />
+      <Route path="/" element={<Authentication />} />
+      <Route path="home" element={<Home />} />
     </ReactRouterRoutes>
   );
 };
